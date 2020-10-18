@@ -13,6 +13,7 @@ env:
 cache:
   directories:
   - "$HOME/.npm"
+<<<<<<< HEAD
 before_install:
 - npm config set spin false
 - if [ "$TRAVIS_NODE_VERSION" != "node" ]; then
@@ -38,6 +39,22 @@ jobs:
     node_js: '14.4'
     before_install: ignore
     before_script: ignore
+=======
+stages:
+- lint
+- test
+- name: ember-cli-update
+  if: branch = master AND type = pull_request
+- name: deploy
+  if: tag IS present
+jobs:
+  include:
+  - stage: lint
+    script:
+    - npm run lint
+  - stage: test
+  - stage: ember-cli-update
+>>>>>>> bc55f05... v1.2.2...v1.3.0
     script:
     - git checkout $TRAVIS_PULL_REQUEST_SHA
     - git checkout -B $TRAVIS_PULL_REQUEST_BRANCH
@@ -47,9 +64,13 @@ jobs:
       --pull-request-url https://api.github.com/repos/$TRAVIS_REPO_SLUG/pulls/$TRAVIS_PULL_REQUEST
       --autofix-command "npm run lint -- --fix"
       --ignore-to
+<<<<<<< HEAD
   - if: tag IS present
     name: deploy
     before_install: ignore
+=======
+  - stage: deploy
+>>>>>>> bc55f05... v1.2.2...v1.3.0
     install: ignore
     before_script: ignore
     script: ignore

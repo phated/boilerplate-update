@@ -1,6 +1,6 @@
 {
   "name": "@phated/boilerplate-update",
-  "version": "0.37.5",
+  "version": "0.37.6",
   "description": "(Fork) Update boilerplate code between versions",
   "main": "src",
   "files": [
